@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Carosello News</title>
+
     <link rel="stylesheet" href="css/style.css"/>
+
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <title>Slider</title>
 </head>
@@ -16,23 +18,40 @@
         <div class="container" >
             <div class="slider-wrapper" tabindex="0">
 
+                
                 <div class="item">
-                    <img src="img/01.jpg" alt="Svezia" />
+                    <img :src="listaSlides[currentIndex].image" :alt="'Immagine' + listaSlides[currentIndex].title" />
                     <div class="text">
-                        <h3>Svezia</h3>
+                        <h3>{{listaSlides[currentIndex].title}}</h3>
                         <p>
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut
-                            veniam inventore eligendi ex ad ullam, cumque provident totam omnis, magnam dolores dolorum corporis.
+                            {{listaSlides[currentIndex].text}}
                         </p>
                     </div>
                 </div>
 
-                <div class="thumbs">
-                    <div class="prev"></div>
-                    <div class="next"></div>
-                    <div class="thumb active">
-                        <img src="img/01.jpg" alt="Svezia"/>
+
+                <!-- <div class="item" v-for="(slideCorrente, i) in listaSlides">
+                    <img :src="slideCorrente.image" :alt="slideCorrente.title" />
+                    <div class="text">
+                        <h3>{{slideCorrente.title}}</h3>
+                        <p>
+                            {{slideCorrente.text}}
+                        </p>
                     </div>
+                </div> -->
+
+
+
+
+                <div class="thumbs">
+                    <div class="prev" @click="changeActiveImg('prev')"></div>
+                    <div class="next" @click="changeActiveImg('next')"></div>
+
+                    <!-- <div v-for = "(slide, i) in listaSlides" 
+                        class="thumb"
+                        :class="{'active': currentIndex === i}"></div>>
+                        <img :src="slide.image" :alt="slide.title"/>
+                    </div> -->
                     <div class="thumb">
                         <img src="img/02.jpg" alt="Svizzera" />
                     </div>

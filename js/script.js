@@ -27,3 +27,34 @@ const slides = [
 ];
 
 console.log(slides);
+
+const sliderApp = new Vue({
+    el: "#app",
+    data: {
+        // Lista slides
+        listaSlides: slides,
+        // Indice dell'immagine attualmente attiva
+        currentIndex: 0,
+    },
+
+    methods: {
+        changeActiveImg(direction) {
+            if (direction === "next") {
+                this.currentIndex++;
+
+                if (this.currentIndex >= this.listaSlides.length) {
+                    this.currentIndex = 0;
+                }
+            } else if (direction === "prev") {
+                this.currentIndex--;
+
+                if (this.currentIndex < 0) {
+                    this.currentIndex = this.listaSlides.length - 1;
+
+                }
+            }
+
+        }
+    }
+
+});
